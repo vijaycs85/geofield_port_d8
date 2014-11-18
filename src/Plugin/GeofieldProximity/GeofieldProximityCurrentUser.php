@@ -64,19 +64,18 @@ class GeofieldProximityCurrentUser extends GeofieldProximityBase {
    * {@inheritdoc}
    */
   public function getSourceValue(ViewsHandlerInterface $views_plugin) {
-    global $user;
-    $user_object = User::load($user->uid);
+    $user_object = User::load(\Drupal::currentUser()->id());
 
     $geofield_name = $views_plugin->options['geofield_proximity_current_user_field'];
     $delta = $views_plugin->options['geofield_proximity_current_user_delta'];
 
     if (!empty($geofield_name)) {
-      $field_data = field_get_items($user_object, $geofield_name);
+      $field_data = $user_object->get($geofield_name);
 
       if ($field_data != FALSE) {
         return array(
-          'latitude' => $field_data[$delta]['lat'],
-          'longitude' => $field_data[$delta]['lon'],
+          'latitude' => $field_data[0]->lat,
+          'longitude' => $field_data[0]->lon,
         );
       }
     }
