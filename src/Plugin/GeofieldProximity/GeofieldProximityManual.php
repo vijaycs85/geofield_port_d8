@@ -62,8 +62,8 @@ class GeofieldProximityManual extends GeofieldProximityBase {
    */
   public function getSourceValue(ViewsHandlerInterface $views_plugin) {
     return array(
-      'latitude' => (isset($views_plugin->value)) ? $views_plugin->value['origin']['lat'] : $views_plugin->options['geofield_proximity_manual']['lat'],
-      'longitude' => (isset($views_plugin->value)) ? $views_plugin->value['origin']['lon'] : $views_plugin->options['geofield_proximity_manual']['lon'],
+      'latitude' => (!empty($views_plugin->value['origin'])) ? $views_plugin->value['origin']['lat'] : $views_plugin->options['geofield_proximity_manual']['lat'],
+      'longitude' => (!empty($views_plugin->value['origin'])) ? $views_plugin->value['origin']['lon'] : $views_plugin->options['geofield_proximity_manual']['lon'],
     );
   }
 }
