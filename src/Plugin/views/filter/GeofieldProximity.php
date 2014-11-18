@@ -208,7 +208,7 @@ class GeofieldProximity extends Numeric {
    */
   public function validateOptionsForm(&$form, FormStateInterface $form_state) {
     parent::validateOptionsForm($form, $form_state);
-    $proximityPlugin = $this->proximityManager->createInstance($form_state['values']['options']['source']);
+    $proximityPlugin = $this->proximityManager->createInstance($form_state->getValue(['options','source']));
     $proximityPlugin->validateOptionsForm($form, $form_state, $this);
   }
 
@@ -245,7 +245,7 @@ class GeofieldProximity extends Numeric {
    */
   protected function valueValidate($form, FormStateInterface $form_state) {
     parent::valueValidate($form, $form_state);
-    $proximityPlugin = $this->proximityManager->createInstance($form_state['values']['options']['source']);
+    $proximityPlugin = $this->proximityManager->createInstance($form_state->getValue(['options','source']));
     $proximityPlugin->valueValidate($form, $form_state, $this);
   }
 
