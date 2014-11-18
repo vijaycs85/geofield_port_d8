@@ -41,7 +41,7 @@ class GeofieldProximityCurrentUser extends GeofieldProximityBase {
   public function buildOptionsForm(array &$form, FormStateInterface &$form_state, ViewsHandlerInterface $views_plugin) {
     $geofields = \Drupal::entityManager()->getFieldMapByFieldType('geofield');
     $field_options = array();
-    if (isset ($geofieds['user'])) {
+    if (isset ($geofields['user'])) {
       foreach ($geofields['user'] as $key => $value) {
         $field_options[$key] = $key;
       }
