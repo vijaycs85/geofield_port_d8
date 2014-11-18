@@ -187,7 +187,7 @@ class GeofieldProximity extends Numeric {
     foreach ($this->proximityManager->getDefinitions() as $key => $handler) {
       // Manually skip 'Exposed Filter', since it wouldn't make any sense in this context.
       if ($key != 'exposed_geofield_filter') {
-        $form['source']['#options'][$key] = $handler['name'];
+        $form['source']['#options'][$key] = $handler['admin_label'];
 
         $proximityPlugin = $this->proximityManager->createInstance($key);
         $proximityPlugin->buildOptionsForm($form, $form_state, $this);
