@@ -150,7 +150,7 @@ class GeofieldProximity extends Numeric {
    * {@inheritdoc}.
    */
   protected function opBetween($options) {
-    $this->query->add_where_expression($this->options['group'], geofield_haversine($options) . ' ' . strtoupper($this->operator) . ' ' . $this->value['distance'] . ' AND ' . $this->value['distance2']);
+    $this->query->addWhereExpression($this->options['group'], geofield_haversine($options) . ' ' . strtoupper($this->operator) . ' ' . $this->value['distance'] . ' AND ' . $this->value['distance2']);
   }
 
   /**
